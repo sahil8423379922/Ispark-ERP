@@ -1,171 +1,151 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
-import 'dart:ui';
-import 'package:ispark/utils.dart';
+import 'package:ispark/screens/Dashboard.dart';
 
-class Scene extends StatelessWidget {
+class AuthScreen extends StatefulWidget {
+  const AuthScreen({super.key});
+
+  @override
+  State<AuthScreen> createState() => _AuthScreenState();
+}
+
+class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
-    double baseWidth = 484;
-    double fem = MediaQuery.of(context).size.width / baseWidth;
-    double ffem = fem * 0.97;
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+
     return Scaffold(
-      body: SizedBox(
-        child: Column(
+      body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              // loginteD (1:3)
-              margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 17 * fem, 7 * fem),
-              child: Text(
-                'Login',
-                textAlign: TextAlign.center,
-                style: SafeGoogleFont(
-                  'Inter',
-                  fontSize: 15 * ffem,
-                  fontWeight: FontWeight.w400,
-                  height: 1.2125 * ffem / fem,
-                  color: Color(0xff0b95c1),
+            Text(
+              "Login",
+              style: TextStyle(
+                  fontSize: 28,
+                  color: const Color.fromARGB(255, 2, 73, 132),
+                  fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: SizedBox(
+                height: height * 0.5,
+                width: width * 0.4,
+                child: Card(
+                  child: SizedBox(
+                      child: Column(
+                    children: [
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: FractionallySizedBox(
+                          widthFactor: 0.8,
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5.0),
+                                border: Border.all(
+                                    width: 1,
+                                    color: Color.fromARGB(255, 122, 122, 122))),
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+                              child: TextField(
+                                decoration: InputDecoration(
+                                    hintText: "Username",
+                                    border: InputBorder.none),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: FractionallySizedBox(
+                          widthFactor: 0.8,
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5.0),
+                                border: Border.all(
+                                    width: 1,
+                                    color: Color.fromARGB(255, 122, 122, 122))),
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+                              child: TextField(
+                                decoration: InputDecoration(
+                                    hintText: "Password",
+                                    border: InputBorder.none),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: FractionallySizedBox(
+                          widthFactor: 0.8,
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+                            child: Container(
+                              color: Colors.blue,
+                              child: MaterialButton(
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 15, 0, 15),
+                                  child: Text(
+                                    "Login",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => DashBoard()));
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Don't Have Account ?",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        "Sign Up as Management",
+                        style: TextStyle(
+                            color: const Color.fromARGB(255, 2, 73, 132)),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        "Sign Up as Trainer or Student",
+                        style: TextStyle(
+                            color: const Color.fromARGB(255, 2, 73, 132)),
+                      )
+                    ],
+                  )),
                 ),
               ),
-            ),
-            Card(
-              // autogroup5tmfiNM (R2BsiFiM4LDtLZWWGi5tmF)
-
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(
-                        21 * fem, 13 * fem, 21 * fem, 13 * fem),
-                    width: 215 * fem,
-                    height: 15 * fem,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xff8e8787)),
-                      color: Color(0xffffffff),
-                      borderRadius: BorderRadius.circular(5 * fem),
-                    ),
-                    child: TextField(
-                      textAlign: TextAlign.center,
-                      style: SafeGoogleFont(
-                        'Inter',
-                        fontSize: 15 * ffem,
-                        fontWeight: FontWeight.w400,
-                        height: 1.2125 * ffem / fem,
-                        color: Color(0xff716a6a),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(
-                        22 * fem, 14 * fem, 22 * fem, 12 * fem),
-                    width: 215 * fem,
-                    height: 15 * fem,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xff8e8787)),
-                      color: Color(0xffffffff),
-                      borderRadius: BorderRadius.circular(5 * fem),
-                    ),
-                    child: TextField(
-                      textAlign: TextAlign.center,
-                      style: SafeGoogleFont(
-                        'Inter',
-                        fontSize: 15 * ffem,
-                        fontWeight: FontWeight.w400,
-                        height: 1.2125 * ffem / fem,
-                        color: Color(0xff716a6a),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    width: 215 * fem,
-                    height: 20 * fem,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xff06e1ff)),
-                      color: Color(0xff0b95c1),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Login',
-                        textAlign: TextAlign.center,
-                        style: SafeGoogleFont(
-                          'Inter',
-                          fontSize: 15 * ffem,
-                          height: 1.2125 * ffem / fem,
-                          color: Color(0xffffffff),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    child: SizedBox(
-                      width: 150 * fem,
-                      height: 19 * fem,
-                      child: Text(
-                        'Don’t have Account ?',
-                        textAlign: TextAlign.center,
-                        style: SafeGoogleFont(
-                          'Inter',
-                          fontSize: 10 * ffem,
-                          fontWeight: FontWeight.w400,
-                          height: 1.2125 * ffem / fem,
-                          color: Color(0xff000000),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    child: SizedBox(
-                      width: 175 * fem,
-                      height: 19 * fem,
-                      child: Text(
-                        'Sign up as Management ',
-                        textAlign: TextAlign.center,
-                        style: SafeGoogleFont(
-                          'Inter',
-                          fontSize: 10 * ffem,
-                          fontWeight: FontWeight.w400,
-                          height: 1.2125 * ffem / fem,
-                          decoration: TextDecoration.underline,
-                          color: Color(0xff003bb0),
-                          decorationColor: Color(0xff003bb0),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    child: SizedBox(
-                      width: 211 * fem,
-                      height: 19 * fem,
-                      child: Text(
-                        'Sign up as Trainer or Student ',
-                        textAlign: TextAlign.center,
-                        style: SafeGoogleFont(
-                          'Inter',
-                          fontSize: 10 * ffem,
-                          fontWeight: FontWeight.w400,
-                          height: 1.2125 * ffem / fem,
-                          decoration: TextDecoration.underline,
-                          color: Color(0xff003bb0),
-                          decorationColor: Color(0xff003bb0),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
+            )
+          ]),
     );
   }
 }
