@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:ispark/auth/SchoolManagementPortal.dart';
-import 'package:ispark/screens/Dashboard.dart';
 
-class AuthScreen extends StatefulWidget {
-  const AuthScreen({super.key});
+class SchoolManagementPortal extends StatefulWidget {
+  const SchoolManagementPortal({super.key});
 
   @override
-  State<AuthScreen> createState() => _AuthScreenState();
+  State<SchoolManagementPortal> createState() => _SchoolManagementPortalState();
 }
 
-class _AuthScreenState extends State<AuthScreen> {
+class _SchoolManagementPortalState extends State<SchoolManagementPortal> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    TextEditingController usertype = new TextEditingController();
+    usertype.text = "ISpark Management";
 
     return Scaffold(
       body: Column(
@@ -21,7 +21,7 @@ class _AuthScreenState extends State<AuthScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              "Login",
+              "Management Sign Up",
               style: TextStyle(
                   fontSize: 28,
                   color: const Color.fromARGB(255, 2, 73, 132),
@@ -33,7 +33,7 @@ class _AuthScreenState extends State<AuthScreen> {
             Align(
               alignment: Alignment.center,
               child: SizedBox(
-                height: height * 0.5,
+                height: height * 0.7,
                 width: width * 0.4,
                 child: Card(
                   child: SizedBox(
@@ -88,6 +88,55 @@ class _AuthScreenState extends State<AuthScreen> {
                         ),
                       ),
                       SizedBox(
+                        height: 5,
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: FractionallySizedBox(
+                          widthFactor: 0.8,
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5.0),
+                                border: Border.all(
+                                    width: 1,
+                                    color: Color.fromARGB(255, 122, 122, 122))),
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+                              child: TextField(
+                                decoration: InputDecoration(
+                                    hintText: "Repeat Password",
+                                    border: InputBorder.none),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: FractionallySizedBox(
+                          widthFactor: 0.8,
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5.0),
+                                border: Border.all(
+                                    width: 1,
+                                    color: Color.fromARGB(255, 122, 122, 122))),
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+                              child: TextField(
+                                controller: usertype,
+                                decoration: InputDecoration(
+                                    hintText: "User Type",
+                                    border: InputBorder.none),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
                         height: 20,
                       ),
                       Align(
@@ -109,10 +158,7 @@ class _AuthScreenState extends State<AuthScreen> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
-                                onPressed: () {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => DashBoard()));
-                                },
+                                onPressed: () {},
                               ),
                             ),
                           ),
@@ -128,16 +174,10 @@ class _AuthScreenState extends State<AuthScreen> {
                       SizedBox(
                         height: 5,
                       ),
-                      InkWell(
-                        onTap: () {
-                          // Navigator.of(context).push(MaterialPageRoute(
-                          //     builder: (context) => SchoolManagementPortal()));
-                        },
-                        child: Text(
-                          "Sign Up as Management",
-                          style: TextStyle(
-                              color: const Color.fromARGB(255, 2, 73, 132)),
-                        ),
+                      Text(
+                        "Sign Up as Management",
+                        style: TextStyle(
+                            color: const Color.fromARGB(255, 2, 73, 132)),
                       ),
                       SizedBox(
                         height: 5,
