@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ispark/auth/Loginscreen.dart';
+import 'package:ispark/screens/dailyupdates.dart';
 
 class DashBoard extends StatefulWidget {
   const DashBoard({super.key});
@@ -23,7 +25,25 @@ class _DashBoardState extends State<DashBoard> {
     return Scaffold(
       appBar: AppBar(title: Center(child: Text("COEMS"))),
       drawer: Drawer(
-        child: Column(children: []),
+        child: Column(children: [
+          DrawerHeader(
+            child: Center(
+                child: Text(
+              "ISpark",
+              style: TextStyle(fontSize: 20),
+            )),
+          ),
+          ListTile(
+            leading: Icon(Icons.policy_outlined),
+            trailing: Icon(Icons.arrow_forward),
+            title: Text("Privacy Policy"),
+          ),
+          ListTile(
+            leading: Icon(Icons.logout),
+            trailing: Icon(Icons.arrow_forward),
+            title: Text("Logout"),
+          ),
+        ]),
       ),
       backgroundColor: Color.fromARGB(255, 235, 235, 235),
       body: Column(
@@ -39,23 +59,29 @@ class _DashBoardState extends State<DashBoard> {
                 children: [
                   Expanded(
                       flex: 1,
-                      child: Card(
-                        child: Column(
-                          children: [
-                            Expanded(
-                                flex: 8,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(15.0),
-                                  child:
-                                      Image(image: AssetImage("ringing.png")),
-                                )),
-                            Expanded(
-                                flex: 2,
-                                child: Text(
-                                  "Daily Updates",
-                                  style: TextStyle(fontSize: 16),
-                                )),
-                          ],
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => Dailyupdates()));
+                        },
+                        child: Card(
+                          child: Column(
+                            children: [
+                              Expanded(
+                                  flex: 8,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(15.0),
+                                    child:
+                                        Image(image: AssetImage("ringing.png")),
+                                  )),
+                              Expanded(
+                                  flex: 2,
+                                  child: Text(
+                                    "Daily Updates",
+                                    style: TextStyle(fontSize: 16),
+                                  )),
+                            ],
+                          ),
                         ),
                       )),
                   Expanded(
